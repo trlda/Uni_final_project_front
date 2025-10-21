@@ -1,4 +1,4 @@
-# Crypto Portfolio Tracker
+# Crypto Currency Exchange
 
 ## Developers
 * Darii Lapukhov
