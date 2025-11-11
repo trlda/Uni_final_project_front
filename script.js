@@ -4,8 +4,8 @@ document.addEventListener('DOMContentLoaded', function() {
     connectButtons.forEach(button => {
         button.addEventListener('click', function() {
             const currency = this.getAttribute('data-currency');
-            const addressInput = document.getElementById(`${currency.toLowerCase()}Address`);
-            const balanceDisplay = document.getElementById(`${currency.toLowerCase()}Balance`);
+            const addressInput = document.getElementById(`${currency}Address`);
+            const balanceDisplay = document.getElementById(`${currency}Balance`);
 
             const address = addressInput.value.trim();
 
