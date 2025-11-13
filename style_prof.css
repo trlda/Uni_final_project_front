@@ -162,39 +162,3 @@ body {
     border-radius: 6px;
     margin-top: 10px;
 }
-
-@media (max-width: 768px) {
-    .profile-container {
-        padding: 20px;
-    }
-
-    .name-display {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .wallet-item {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 15px;
-    }
-
-    .wallet-label {
-        width: 100%;
-        text-align: center;
-    }
-
-    .wallet-input {
-        margin-right: 0;
-        margin-bottom: 10px;
-    }
-
-    .connect-btn {
-        width: 100%;
-    }
-
-    .balance-display {
-        margin-left: 0;
-        text-align: center;
-    }
-}
