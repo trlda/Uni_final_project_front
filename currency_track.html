@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Tracker - CryptoExchange</title>
+    <link rel="stylesheet" href="styles/currency_track_style.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">◆</span>
+                <span class="logo-text">CryptoExchange</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="main_page.html">Home</a></li>
+                <li><a href="currency_track.html">Tracker</a></li>
+                <li><a href="#calculator">Calculator</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-secondary">Sign In</button>
+                <button class="btn-primary">Get Started</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="tracker-container">
+        <h1 style="font-size: 2.5rem; margin-bottom: 2rem; background: linear-gradient(135deg, #ffd700, #ffed4e); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+            Cryptocurrency Tracker
+        </h1>
+
+        <div class="select-section">
+            <select id="currencies">
+                <option value="">Select a currency</option>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                <option value="USDT">USDT</option>
+                <option value="XRP">XRP</option>
+                <option value="BNB">BNB</option>
+                <option value="SOL">SOL</option>
+                <option value="USDC">USDC</option>
+                <option value="stETH">stETH</option>
+                <option value="TRX">TRX</option>
+                <option value="DOG">DOG</option>
+                <option value="ORDI">ORDI</option>
+                <option value="WBTC">WBTC</option>
+                <option value="HYPE">HYPE</option>
+                <option value="LINK">LINK</option>
+                <option value="SATS">SATS</option>
+            </select>
+        </div>
+
+        <div id="currencyDetail" class="currency-detail">
+            <div class="currency-header">
+                <div class="currency-name">
+                    <h2 id="currencyName"></h2>
+                </div>
+                <div>
+                    <div class="price-display" id="priceDisplay"></div>
+                    <div class="price-change" id="priceChange"></div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Current Price</div>
+                    <div class="stat-value" id="currentPrice"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Yesterday's Price</div>
+                    <div class="stat-value" id="yesterdayPrice"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">24h Change</div>
+                    <div class="stat-value" id="change24h"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">24h Change %</div>
+                    <div class="stat-value" id="changePercent"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer></footer>
+    <script src="scripts/currency_track_script.js"></script>
+</body>
+</html>
