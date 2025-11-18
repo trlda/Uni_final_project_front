@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="style_prof.css">
+</head>
+<body>
+<div class="profile-container">
+    <div class="profile-header">
+        <h1>Profile</h1>
+        <div class="name-display">
+            <div class="name-field">
+                <label>Name</label>
+                <div class="name-value" id="firstName"></div>
+            </div>
+            <div class="name-field">
+                <label>Last name</label>
+                <div class="name-value" id="lastName"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wallet-section">
+        <div class="wallet-item">
+            <div class="wallet-label">BTC wallet:</div>
+            <div class="wallet-input">
+                <input type="text" id="BTCAddress" placeholder="Enter your BTC wallet address">
+            </div>
+            <button class="connect-btn" data-symbol="BTC">Connect</button>
+            <div class="balance-display" id="BTCBalance"></div>
+        </div>
+
+        <div class="wallet-item">
+            <div class="wallet-label">ETH wallet:</div>
+            <div class="wallet-input">
+                <input type="text" id="ETHAddress" placeholder="Enter your ETH wallet address">
+            </div>
+            <button class="connect-btn" data-symbol="ETH">Connect</button>
+            <div class="balance-display" id="ETHBalance"></div>
+        </div>
+
+        <div class="wallet-item">
+            <div class="wallet-label">SOL wallet:</div>
+            <div class="wallet-input">
+                <input type="text" id="SOLAddress" placeholder="Enter your SOL wallet address">
+            </div>
+            <button class="connect-btn" data-symbol="SOL">Connect</button>
+            <div class="balance-display" id="SOLBalance"></div>
+        </div>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
