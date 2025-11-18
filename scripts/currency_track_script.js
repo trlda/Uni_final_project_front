@@ -42,39 +42,30 @@ async function showCurrency(currency) {
             changeClass = 'negative';
             changeSymbol = '-';
         }
+
+        let formattedPrice = parseFloat(data.price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        let formattedYesterdayPrice = parseFloat(data.yesterday_price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        let formattedChange = Math.abs(priceChange).toFixed(3);
         
-        dataDisplay.innerHTML = `
-            <div class="currency-header">
-                <div class="currency-name">
-                    <h2>${currency}</h2>
-                </div>
-                <div>
-                    <div class="price-display">${parseFloat(data.price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} $</div>
-                    <div class="price-change ${changeClass}">
-                        ${changeSymbol}${Math.abs(priceChange).toFixed(3)} (${priceChangePercent}%)
-                    </div>
-                </div>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-box">
-                    <div class="stat-label">Current Price</div>
-                    <div class="stat-value">${parseFloat(data.price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} $</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">Yesterday's Price</div>
-                    <div class="stat-value">${parseFloat(data.yesterday_price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2})} $</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">24h Change</div>
-                    <div class="stat-value ${changeClass}">${changeSymbol}${Math.abs(priceChange).toFixed(3)}$</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-label">24h Change %</div>
-                    <div class="stat-value ${changeClass}">${priceChangePercent}%</div>
-                </div>
-            </div>
-        `;
+        document.getElementById('currencyName').textContent = currency;
+        document.getElementById('priceDisplay').textContent = `${formattedPrice} $`;
+        
+        let priceChangeEl = document.getElementById('priceChange');
+        priceChangeEl.textContent = `${changeSymbol}${formattedChange} (${priceChangePercent}%)`;
+        priceChangeEl.className = `price-change ${changeClass}`;
+        
+        document.getElementById('currentPrice').textContent = `${formattedPrice} $`;
+        document.getElementById('yesterdayPrice').textContent = `${formattedYesterdayPrice} $`;
+        
+        let change24hEl = document.getElementById('change24h');
+        change24hEl.textContent = `${changeSymbol}${formattedChange}$`;
+        change24hEl.className = `stat-value ${changeClass}`;
+        
+        let changePercentEl = document.getElementById('changePercent');
+        changePercentEl.textContent = `${priceChangePercent}%`;
+        changePercentEl.className = `stat-value ${changeClass}`;
+        
     } catch (error) {
-        dataDisplay.innerHTML = '<p>Error loading data</p>'
+        document.getElementById('currencyDetail').innerHTML = '<p>Error loading data</p>';
     }
 }

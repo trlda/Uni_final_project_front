@@ -42,6 +42,7 @@
                 <option value="USDC">USDC</option>
                 <option value="stETH">stETH</option>
                 <option value="TRX">TRX</option>
+                <option value="DOG">DOG</option>
                 <option value="ORDI">ORDI</option>
                 <option value="WBTC">WBTC</option>
                 <option value="HYPE">HYPE</option>
@@ -51,6 +52,33 @@
         </div>
 
         <div id="currencyDetail" class="currency-detail">
+            <div class="currency-header">
+                <div class="currency-name">
+                    <h2 id="currencyName"></h2>
+                </div>
+                <div>
+                    <div class="price-display" id="priceDisplay"></div>
+                    <div class="price-change" id="priceChange"></div>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-label">Current Price</div>
+                    <div class="stat-value" id="currentPrice"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">Yesterday's Price</div>
+                    <div class="stat-value" id="yesterdayPrice"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">24h Change</div>
+                    <div class="stat-value" id="change24h"></div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-label">24h Change %</div>
+                    <div class="stat-value" id="changePercent"></div>
+                </div>
+            </div>
         </div>
     </div>
 
