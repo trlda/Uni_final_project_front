@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Currency Calculator</title>
+    <link rel="stylesheet" href="styles/calculator_styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CryptoExchange</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="currency_track.html">Currencies</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-primary">Login</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="tracker-container">
+        <div class="calculator-section">
+            <h1 class="calculator-title">Cryptocurrency Calculator</h1>
+            
+            <div class="conversion-container">
+                <div class="input-group">
+                    <label for="fromAmount">From</label>
+                    <div class="input-row">
+                        <input type="number" id="fromAmount" placeholder="Enter amount" value="1" min="0" step="any">
+                        <select id="fromCurrency">
+                            <option value="BTC">BTC</option>
+                            <option value="ETH">ETH</option>
+                            <option value="USDT">USDT</option>
+                            <option value="XRP">XRP</option>
+                            <option value="SOL">SOL</option>
+                            <option value="BNB">BNB</option>
+                            <option value="USDC">USDC</option>
+                            <option value="stETH">stETH</option>
+                            <option value="TRX">TRX</option>
+                            <option value="ORDI">ORDI</option>
+                            <option value="WBTC">WBTC</option>
+                            <option value="HYPE">HYPE</option>
+                            <option value="LINK">LINK</option>
+                            <option value="SATS">SATS</option>
+                            <option value="USD" selected>US Dollar (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button class="swap-button" id="swapBtn">⇅</button>
+
+                <div class="input-group">
+                    <label for="toAmount">To</label>
+                    <div class="input-row">
+                        <input type="number" id="toAmount" placeholder="Converted amount" readonly>
+                        <select id="toCurrency">
+                            <option value="BTC" selected>BTC</option>
+                            <option value="ETH">ETH</option>
+                            <option value="USDT">USDT</option>
+                            <option value="XRP">XRP</option>
+                            <option value="SOL">SOL</option>
+                            <option value="BNB">BNB</option>
+                            <option value="USDC">USDC</option>
+                            <option value="stETH">stETH</option>
+                            <option value="TRX">TRX</option>    
+                            <option value="ORDI">ORDI</option>
+                            <option value="WBTC">WBTC</option>
+                            <option value="HYPE">HYPE</option>
+                            <option value="LINK">LINK</option>
+                            <option value="SATS">SATS</option>
+                            <option value="USD">US Dollar (USD)</option>
+                            <option value="EUR">Euro (EUR)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <footer></footer>
+    <script src="scripts/calculator_script.js"></script>
+</body>
+</html>
