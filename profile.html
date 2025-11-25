@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
-    <link rel="stylesheet" href="style_prof.css">
+    <link rel="stylesheet" href="styles/style_prof.css">
 </head>
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CryptoExchange</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="main_page.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
+                <li><a href="currency_track.html">Currencies</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <button class="btn-primary" id="login-btn">Login</button>
+                <button class="btn-secondary hidden" id="logout-btn">Logout</button>
+            </div>
+        </nav>
+    </header>
 <div class="profile-container">
     <div class="profile-header">
         <h1>Profile</h1>
@@ -52,6 +68,6 @@
     </div>
 </div>
 
-<script src="script_profile.js"></script>
+<script src="scripts/script_profile.js"></script>
 </body>
 </html>

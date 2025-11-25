@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", async function() {
             localStorage.setItem("refresh_token", data.refresh);
             localStorage.setItem("username", username);
 
-            window.location.href = "index.html";
+            window.location.href = "main_page.html";
         } else {
             status.textContent = "Login failed!";
         }
