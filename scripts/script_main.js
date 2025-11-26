@@ -7,7 +7,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (token && username) {
         loginBtn.textContent = username;
-        loginBtn.href = "profile.html";
+        loginBtn.onclick = function() {
+            window.location.href = "profile.html";
+        };
 
         logoutBtn.classList.remove("hidden");
         logoutBtn.addEventListener("click", function(e) {
@@ -15,13 +17,18 @@ document.addEventListener("DOMContentLoaded", function() {
             localStorage.removeItem("access_token");
             localStorage.removeItem("refresh_token");
             localStorage.removeItem("username");
-            window.location.href = "index.html";
+            window.location.href = "main_page.html";
         });
     } else {
         loginBtn.textContent = "Login";
-        loginBtn.href = "login.html";
-        logoutBtn.classList.add("hidden");
+        loginBtn.onclick = function() {
+            window.location.href = "login.html";
+        };
+        if (logoutBtn) {
+            logoutBtn.classList.add("hidden");
+        }
     }
+
 });
 
 

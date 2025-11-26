@@ -4,22 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CryptoExchange</title>
-    <link rel="stylesheet" href="styles/main_page_style.css">
+    <link rel="stylesheet" href="styles/style_main.css">
 </head>
 <body>
-<header>
-    <div class="container header-container">
-        <h1 class="logo">CryptoExchange</h1>
-        <nav>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-text">CryptoExchange</span>
+            </div>
             <ul class="nav-links">
-                <li><a href="calculator.html">Exchanger</a></li>
+                <li><a href="main_page.html">Home</a></li>
+                <li><a href="calculator.html">Calculator</a></li>
                 <li><a href="currency_track.html">Currencies</a></li>
-                <li><a href="#" id="login-btn">Login</a></li>
             </ul>
+            <div class="nav-buttons">
+                <button class="btn-primary" id="login-btn">Login</button>
+                <button class="btn-secondary hidden" id="logout-btn">Logout</button>
+            </div>
         </nav>
-    </div>
-</header>
-
+    </header>
 <main>
     <section class="description-card">
         <h2>Description</h2>
@@ -32,6 +35,6 @@
     <p>Crypto Exchange 2025</p>
 </footer>
 
-<script src="scripts/main_page_script.js"></script>
+<script src="scripts/script_main.js"></script>
 </body>
 </html>
