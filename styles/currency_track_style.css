@@ -232,3 +232,6 @@ header {
 .negative {
     color: #f87171;
 }
+.hidden {
+    display: none !important;
+}
