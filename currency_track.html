@@ -41,7 +41,6 @@
                 <option value="USDC">USDC</option>
                 <option value="stETH">stETH</option>
                 <option value="TRX">TRX</option>
-                <option value="DOG">DOG</option>
                 <option value="ORDI">ORDI</option>
                 <option value="WBTC">WBTC</option>
                 <option value="HYPE">HYPE</option>
@@ -79,9 +78,19 @@
                 </div>
             </div>
         </div>
+
+        <div class="chart-section" id="chartSection">
+            <div class="chart-title">Price History</div>
+            <div class="chart-wrapper">
+                <canvas id="priceChart"></canvas>
+            </div>
+        </div>
     </div>
 
     <footer></footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="scripts/graph_script.js"></script>
     <script src="scripts/currency_track_script.js"></script>
 </body>
 </html>
