@@ -364,3 +364,6 @@ header {
 .rate-info strong {
     color: #ffd700;
 }
+.hidden {
+    display: none !important;
+}

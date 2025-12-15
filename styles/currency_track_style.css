@@ -290,4 +290,6 @@ header {
     border-radius: 8px;
     margin: 1rem 0;
     text-align: center;
+.hidden {
+    display: none !important;
 }

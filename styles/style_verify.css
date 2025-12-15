@@ -15,7 +15,7 @@ body {
     min-height: 100vh;
 }
 
-.register-container {
+.verify-container {
     max-width: 500px;
     width: 100%;
     background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
@@ -29,6 +29,14 @@ h2 {
     text-align: center;
     margin-bottom: 20px;
     color: #ffd700;
+}
+
+.info-text {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #cccccc;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .form-group {
@@ -50,6 +58,9 @@ input {
     background-color: #121212;
     color: white;
     outline: none;
+    font-size: 18px;
+    text-align: center;
+    letter-spacing: 4px;
 }
 
 input:focus {
@@ -72,11 +83,10 @@ input:focus {
     background: #e5c100;
 }
 
-.back-link {
+#status {
     text-align: center;
     margin-top: 15px;
+    font-size: 14px;
+    min-height: 20px;
 }
 
-.back-link a {
-    color: #ffd700;
-}

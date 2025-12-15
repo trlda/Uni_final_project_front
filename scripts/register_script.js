@@ -24,8 +24,20 @@ document.addEventListener("DOMContentLoaded", function () {
         });
 
         if (response.ok) {
+            await fetch("http://127.0.0.1:8000/auth/send-code/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email
+                })
+            });
+
             status.style.color = "lime";
             status.textContent = "Registration successful!";
+
+            localStorage.setItem("verify_email", email);
+
+            window.location.href = "verify.html";
         } else {
             status.style.color = "red";
             status.textContent = "Registration failed!";
