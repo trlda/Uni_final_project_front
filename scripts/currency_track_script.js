@@ -1,5 +1,6 @@
-const dataSelector = document.getElementById('currencies')
-const dataDisplay = document.getElementById('currencyDetail')
+const dataSelector = document.getElementById('currencies');
+const dataDisplay = document.getElementById('currencyDetail');
+const chartSection = document.getElementById('chartSection');
 
 dataSelector.addEventListener('change', function() {
     const selectedCurrency = this.value;
@@ -16,56 +17,71 @@ async function CurrencyDataFetch(currency) {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
+        });
         
-        if(!response.ok) throw new Error('Failed to fetch currency')
+        if(!response.ok) throw new Error('Failed to fetch currency');
         
-        const currencyDetails = await response.json()
-        return currencyDetails
+        const currencyDetails = await response.json();
+        return currencyDetails;
     } catch (error) {
-        console.error('Error fetching currency data:', error)
-        throw error
+        console.error('Error fetching currency data:', error);
+        throw error;
     }
 }
+
 async function showCurrency(currency) {
-    const data = await CurrencyDataFetch(currency)
     try {
+        const data = await CurrencyDataFetch(currency);
+        
         let priceChange = data.price - data.yesterday_price;
         let priceChangePercent = ((priceChange / data.yesterday_price) * 100).toFixed(5);
         let changeClass;
         let changeSymbol;
-
+        
         if (priceChange >= 0) {
             changeClass = 'positive';
             changeSymbol = '+';
         } else {
             changeClass = 'negative';
-            changeSymbol = '-';
+            changeSymbol = '';
         }
-
-        let formattedPrice = parseFloat(data.price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
-        let formattedYesterdayPrice = parseFloat(data.yesterday_price).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        
+        let formattedPrice = parseFloat(data.price).toLocaleString('en-US', {
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2
+        });
+        let formattedYesterdayPrice = parseFloat(data.yesterday_price).toLocaleString('en-US', {
+            minimumFractionDigits: 2, 
+            maximumFractionDigits: 2
+        });
         let formattedChange = Math.abs(priceChange).toFixed(3);
         
         document.getElementById('currencyName').textContent = currency;
-        document.getElementById('priceDisplay').textContent = `${formattedPrice} $`;
+        document.getElementById('priceDisplay').textContent = `$${formattedPrice}`;
         
         let priceChangeEl = document.getElementById('priceChange');
-        priceChangeEl.textContent = `${changeSymbol}${formattedChange} (${priceChangePercent}%)`;
+        priceChangeEl.textContent = `${changeSymbol}${formattedChange} (${changeSymbol}${priceChangePercent}%)`;
         priceChangeEl.className = `price-change ${changeClass}`;
         
-        document.getElementById('currentPrice').textContent = `${formattedPrice} $`;
-        document.getElementById('yesterdayPrice').textContent = `${formattedYesterdayPrice} $`;
+        document.getElementById('currentPrice').textContent = `$${formattedPrice}`;
+        document.getElementById('yesterdayPrice').textContent = `$${formattedYesterdayPrice}`;
         
         let change24hEl = document.getElementById('change24h');
-        change24hEl.textContent = `${changeSymbol}${formattedChange}$`;
+        change24hEl.textContent = `${changeSymbol}$${formattedChange}`;
         change24hEl.className = `stat-value ${changeClass}`;
         
         let changePercentEl = document.getElementById('changePercent');
-        changePercentEl.textContent = `${priceChangePercent}%`;
+        changePercentEl.textContent = `${changeSymbol}${priceChangePercent}%`;
         changePercentEl.className = `stat-value ${changeClass}`;
         
+        if (window.chartFunctions && window.chartFunctions.initChartForCurrency) {
+            await window.chartFunctions.initChartForCurrency(currency);
+        } else {
+            console.error('chartFunctions not available');
+        }
+        
     } catch (error) {
-        document.getElementById('currencyDetail').innerHTML = '<p>Error loading data</p>';
+        console.error('Error:', error);
+        dataDisplay.innerHTML = '<p class="error">Error loading data</p>';
     }
 }
