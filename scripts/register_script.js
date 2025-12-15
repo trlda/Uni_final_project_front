@@ -19,7 +19,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 email,
                 phone_number: phone,
                 password,
-                password2
+                password2,
+                status: "DEFAULT"
             })
         });
 

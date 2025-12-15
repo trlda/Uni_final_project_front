@@ -10,37 +10,51 @@ async function loadUser() {
             return;
         }
         
-        const res = await fetch(`http://127.0.0.1:8000/auth/user/`, {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const userId = payload.user_id;
+        
+        if (!userId) {
+            console.error('User ID not found in token');
+            return;
+        }
+        
+        const res = await fetch(`http://127.0.0.1:8000/auth/user/${userId}/`, {
+            method: 'GET',
             headers: {
-                'Authorization': `Bearer ${token}`
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json'
             }
         });
         
         if (!res.ok) {
-            throw new Error('Failed to load user');
+            if (res.status === 401) {
+                console.error('Token expired or invalid');
+                localStorage.removeItem('access');
+            }
+            throw new Error(`Failed to load user: ${res.status}`);
         }
         
         const data = await res.json();
         
-        if (data.is_vip) {
+        if (data.status === "VIP") {
             userFee = 0.015;
         } else {
             userFee = 0.05;
         }
+        
     } catch (error) {
         console.error('Error loading user:', error);
+        userFee = 0.05;
     }
 }
 
 async function getCryptoPrice(currency) {
     try {
-        const token = localStorage.getItem('access_token');
+        const res = await fetch(`http://127.0.0.1:8000/prices/?symbol=${currency}`);
         
-        const res = await fetch(`http://127.0.0.1:8000/prices/?symbol=${currency}`, {
-            headers: {
-                'Authorization': `Bearer ${token}`
-            }
-        });
+        if (!res.ok) {
+            throw new Error(`Failed to fetch price for ${currency}`);
+        }
         
         const data = await res.json();
         return data.price;
@@ -52,7 +66,12 @@ async function getCryptoPrice(currency) {
 
 async function loadFiat() {
     try {
-        const res = await fetch(`https://api.exchangerate-api.com/v4/latest/USD`);
+        const res = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+        
+        if (!res.ok) {
+            throw new Error('Failed to fetch fiat rates');
+        }
+        
         const data = await res.json();
         fiatRates = {
             USD: 1,
@@ -104,7 +123,7 @@ async function convert() {
     if (userFee === 0.015) {
         userType = 'VIP';
     } else {
-        userType = 'Regular';
+        userType = 'DEFAULT';
     }
     
     document.getElementById('rateInfo').innerHTML = 
