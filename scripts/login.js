@@ -1,27 +1,29 @@
-document.addEventListener("DOMContentLoaded", async function() {
-    document.getElementById('login-form').onsubmit = async function(e) {
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("login-form").onsubmit = async (e) => {
         e.preventDefault();
 
-        const status = document.getElementById('login-status');
-        const username = document.getElementById('username').value;
-        const password = document.getElementById('password').value;
+        const statusEl = document.getElementById("login-status");
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
 
-        const response = await fetch("http://127.0.0.1:8000/auth/login/", {
+        const res = await fetch("http://127.0.0.1:8000/auth/login/", {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({ username: username, password: password })
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
         });
 
-        const data = await response.json();
+        const data = await res.json();
 
-        if (response.ok) {
-            localStorage.setItem("access_token", data.access);
-            localStorage.setItem("refresh_token", data.refresh);
-            localStorage.setItem("username", username);
-
-            window.location.href = "main_page.html";
-        } else {
-            status.textContent = "Login failed!";
+        if (!res.ok) {
+            statusEl.textContent = "Login failed";
+            return;
         }
+
+        localStorage.setItem("access_token", data.access);
+        localStorage.setItem("username", username);
+
+        localStorage.setItem("user_status", data.status || "DEFAULT");
+
+        window.location.href = "main_page.html";
     };
 });
